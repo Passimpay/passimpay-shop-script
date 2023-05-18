@@ -1,0 +1,1 @@
+# passimpay-shop-script
