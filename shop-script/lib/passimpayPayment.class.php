@@ -8,7 +8,7 @@ class passimpayPayment extends waPayment
 {
     private $settings = null;
 
-    public $url = 'http://www.cbr.ru/scripts/XML_daily.asp';
+    public $url = 'https://www.cbr.ru/scripts/XML_daily.asp';
 
     protected static $currencies = array(
         'RUB',
@@ -220,8 +220,8 @@ class passimpayPayment extends waPayment
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        //curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         $result = curl_exec($curl);
         curl_close( $curl );
 
@@ -281,12 +281,14 @@ class passimpayPayment extends waPayment
         } catch (waException $ex) {
             $debug['message'] = $ex->getMessage();
             $debug['exception'] = get_class($ex);
-            if (!empty($net)) {
+            /*
+			if (!empty($net)) {
                 if (!isset($debug['response'])) {
                     $debug['raw_response'] = $net->getResponse(true);
                 }
                 $debug['header'] = $net->getResponseHeader();
             }
+			*/
             self::log($this->id, $debug);
             throw $ex;
         }
