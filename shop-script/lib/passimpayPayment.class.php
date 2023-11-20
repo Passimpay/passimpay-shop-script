@@ -26,7 +26,7 @@ class passimpayPayment extends waPayment
 
     public function payment($payment_form_data, $order_data, $auto_submit = false)
     {
-        $url = 'https://passimpay.io/api/createorder';
+        $url = 'https://api.passimpay.io/createorder';
         $platform_id = $this->getSettings('platform_id'); // ID платформы
         $apikey = $this->getSettings('apikey'); // Секретный ключ
         $order_id = $order_data['id']; // Payment ID Вашей платформы
@@ -195,7 +195,7 @@ class passimpayPayment extends waPayment
         // платеж зачислен
         // ваш код...
 
-        $url = 'https://passimpay.io/api/orderstatus';
+        $url = 'https://api.passimpay.io/orderstatus';
         $platform_id = $data['platform_id']; // ID платформы
         //$apikey = $apikey; // Секретный ключ
         $order_id = $data['order_id']; // Payment ID Вашей платформы
